@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../styles/App.css";
 import Loader from "./Loader";
 
@@ -20,7 +20,18 @@ const App = () => {
     webiste: "",
   });
 
-  const handleOnClick = () => {};
+  const handleOnClick = () => {
+    useEffect(() => {
+      if(userId){
+        setIsLoading(true);
+        <Loader value={isLoading}/>
+        setTimeout(() => {
+          setIsLoading(false);
+          setUserData(userData);
+        },2000)
+      }
+    },[userId])
+  };
 
   const onChangeHandler = (event) => {
     setUserId(event.target.value);
